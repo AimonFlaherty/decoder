@@ -8,6 +8,18 @@ const substitutionModule = (function () {
 
   function substitution(input, alphabet, encode = true) {
     // your solution code here
+    const setAlpha = new Set(alphabet);
+    if(!alphabet || setAlpha.size != 26 || setAlpha.size != alphabet.length) return false;
+    const alphabetTwo = [...Array(26)].map((ele, i) => String.fromCharCode(i + 97));
+    const subAlpha = encode ? [...alphabet] : alphabetTwo;
+    const alpha =  encode ? alphabetTwo : [...alphabet];
+    input = input.toLowerCase();
+    let arr = [...input].map((c) => c = isValidLetter(c) ? subAlpha[alpha.findIndex((element) => element == c)] : c);
+    return arr.join('');
+  }
+
+  function isValidLetter(letter){
+    return letter.charCodeAt(0) > 96 && letter.charCodeAt(0) < 123 || letter.charCodeAt(0) > 32 && letter.charCodeAt(0) < 48 ? true : false;
   }
 
   return {
