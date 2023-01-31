@@ -22,9 +22,10 @@ const polybiusModule = (function () {
     let message = "";
     input.forEach(element => {
       element = parseInt(element);
+      let flag = false
       const elementMessage = element ? decodeConvert(alpha, element) : " ";
-      if(!elementMessage) return false;
-      message = elementMessage + message;
+      if(!elementMessage) flag = true;
+      message = flag ? false : elementMessage + message;
     });
     return message;
   }
