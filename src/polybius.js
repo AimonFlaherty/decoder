@@ -17,7 +17,7 @@ const polybiusModule = (function () {
   }
   
   function decoder(input, alpha){
-    if(input.replaceAll(" ", "").length % 2 != 0) return false;
+    if(input.replace(/(\s+)/g, "").length % 2 != 0) return false;
     input = input.split(/(\s+)/).reverse();
     let message = "";
     input.forEach(element => {
